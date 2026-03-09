@@ -82,6 +82,7 @@
 
     .game-card {
       margin-bottom: 0.75rem;
+      transition: border-color 0.15s, box-shadow 0.15s;
     }
     .game-header {
       display: flex;
@@ -240,26 +241,28 @@
       margin-top: 0.5rem;
     }
 
-    /* Clickable game card */
-    a.game-link {
-      display: block;
-      text-decoration: none;
-      color: inherit;
+    /* Clickable game card — overlay anchor, avoids block-in-inline parsing issues */
+    .game-card { position: relative; cursor: pointer; }
+    .game-card-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: 12px;
     }
-    a.game-link:hover {
+    .game-card:hover {
       border-color: var(--blue);
-      box-shadow: 0 0 0 1px rgba(59,130,246,0.4);
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.35);
     }
 
-    /* Injury pills as links */
+    /* Injury pills sit above the card overlay so tapping them opens ESPN, not NBA.com */
+    .inj-block { position: relative; z-index: 2; }
     a.inj-pill {
       text-decoration: none;
       cursor: pointer;
+      position: relative;
+      z-index: 2;
     }
-    a.inj-pill:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
+    a.inj-pill:hover { text-decoration: underline; opacity: 1; }
 
     /* Team logos */
     .team-logo {
@@ -365,7 +368,8 @@
 
     <div class="games-header">Today's Predictions</div>
     
-      <a class="card game-card game-link" href="https://www.nba.com/game/0022500935" target="_blank" rel="noopener">
+      <div class="card game-card">
+        <a class="game-card-link" href="https://www.nba.com/game/0022500935" target="_blank" rel="noopener" aria-label="View New York Knicks @ LA Clippers on NBA.com"></a>
         <div class="game-header">
           <span class="game-time">10:00 pm ET</span>
           <span class="badge conf-low">Tossup</span>
@@ -391,8 +395,9 @@
     </div>
         <div class="elo-line">ELO: New York Knicks 1640 · LA Clippers 1577</div>
         <div class="inj-block"><div class="inj-row"><span class="inj-team">New York Knicks:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/ny" target="_blank" rel="noopener" class="inj-pill inj-starter">Mitchell Robinson <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/ny" target="_blank" rel="noopener" class="inj-pill inj-starter">Miles McBride <em>out</em></a> </div></div>
-      </a>
-      <a class="card game-card game-link" href="https://www.nba.com/game/0022500932" target="_blank" rel="noopener">
+      </div>
+      <div class="card game-card">
+        <a class="game-card-link" href="https://www.nba.com/game/0022500932" target="_blank" rel="noopener" aria-label="View Memphis Grizzlies @ Brooklyn Nets on NBA.com"></a>
         <div class="game-header">
           <span class="game-time">7:30 pm ET</span>
           <span class="badge conf-low">Tossup</span>
@@ -418,8 +423,9 @@
     </div>
         <div class="elo-line">ELO: Memphis Grizzlies 1411 · Brooklyn Nets 1277</div>
         <div class="inj-block"><div class="inj-row"><span class="inj-team">Memphis Grizzlies:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Ja Morant <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Brandon Clarke <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Zach Edey <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Brooklyn Nets:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/bkn" target="_blank" rel="noopener" class="inj-pill inj-star">Michael Porter Jr. <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bkn" target="_blank" rel="noopener" class="inj-pill inj-starter">Egor Demin <em>out</em></a> </div></div>
-      </a>
-      <a class="card game-card game-link" href="https://www.nba.com/game/0022500933" target="_blank" rel="noopener">
+      </div>
+      <div class="card game-card">
+        <a class="game-card-link" href="https://www.nba.com/game/0022500933" target="_blank" rel="noopener" aria-label="View Denver Nuggets @ Oklahoma City Thunder on NBA.com"></a>
         <div class="game-header">
           <span class="game-time">7:30 pm ET</span>
           <span class="badge conf-high">Strong</span>
@@ -444,9 +450,10 @@
       <div class="prob-label right">Oklahoma City Thunder</div>
     </div>
         <div class="elo-line">ELO: Denver Nuggets 1604 · Oklahoma City Thunder 1775</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Denver Nuggets:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/den" target="_blank" rel="noopener" class="inj-pill inj-star">Jamal Murray <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/den" target="_blank" rel="noopener" class="inj-pill inj-starter">Peyton Watson <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Oklahoma City Thunder:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Chet Holmgren <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Jalen Williams <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Isaiah Hartenstein <em>out</em></a> </div></div>
-      </a>
-      <a class="card game-card game-link" href="https://www.nba.com/game/0022500934" target="_blank" rel="noopener">
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Denver Nuggets:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/den" target="_blank" rel="noopener" class="inj-pill inj-starter">Peyton Watson <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Oklahoma City Thunder:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Chet Holmgren <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Jalen Williams <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Isaiah Hartenstein <em>out</em></a> </div></div>
+      </div>
+      <div class="card game-card">
+        <a class="game-card-link" href="https://www.nba.com/game/0022500934" target="_blank" rel="noopener" aria-label="View Golden State Warriors @ Utah Jazz on NBA.com"></a>
         <div class="game-header">
           <span class="game-time">9:00 pm ET</span>
           <span class="badge conf-high">Strong</span>
@@ -472,8 +479,9 @@
     </div>
         <div class="elo-line">ELO: Golden State Warriors 1527 · Utah Jazz 1272</div>
         <div class="inj-block"><div class="inj-row"><span class="inj-team">Golden State Warriors:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/gs" target="_blank" rel="noopener" class="inj-pill inj-star">Stephen Curry <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/gs" target="_blank" rel="noopener" class="inj-pill inj-star">Jimmy Butler III <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/gs" target="_blank" rel="noopener" class="inj-pill inj-star">Al Horford <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Utah Jazz:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/utah" target="_blank" rel="noopener" class="inj-pill inj-star">Jusuf Nurkic <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/utah" target="_blank" rel="noopener" class="inj-pill inj-star">Jaren Jackson Jr. <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/utah" target="_blank" rel="noopener" class="inj-pill inj-starter">Lauri Markkanen <em>out</em></a> </div></div>
-      </a>
-      <a class="card game-card game-link" href="https://www.nba.com/game/0022500931" target="_blank" rel="noopener">
+      </div>
+      <div class="card game-card">
+        <a class="game-card-link" href="https://www.nba.com/game/0022500931" target="_blank" rel="noopener" aria-label="View Philadelphia 76ers @ Cleveland Cavaliers on NBA.com"></a>
         <div class="game-header">
           <span class="game-time">TBD</span>
           <span class="badge conf-high">Strong</span>
@@ -499,7 +507,7 @@
     </div>
         <div class="elo-line">ELO: Philadelphia 76ers 1465 · Cleveland Cavaliers 1657</div>
         <div class="inj-block"><div class="inj-row"><span class="inj-team">Philadelphia 76ers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/phi" target="_blank" rel="noopener" class="inj-pill inj-star">Joel Embiid <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phi" target="_blank" rel="noopener" class="inj-pill inj-star">Tyrese Maxey <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phi" target="_blank" rel="noopener" class="inj-pill inj-starter">VJ Edgecombe <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Cleveland Cavaliers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/cle" target="_blank" rel="noopener" class="inj-pill inj-star">Jarrett Allen <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/cle" target="_blank" rel="noopener" class="inj-pill inj-starter">Dean Wade <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/cle" target="_blank" rel="noopener" class="inj-pill inj-starter">Max Strus <em>out</em></a> </div></div>
-      </a>
+      </div>
 
     
       <div class="card">
@@ -674,7 +682,7 @@
   </div>
 
   <footer>
-    Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 05:21 PM
+    Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 05:33 PM
   </footer>
 </body>
 </html>
