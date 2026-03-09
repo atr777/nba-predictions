@@ -240,9 +240,23 @@
       margin-top: 0.5rem;
     }
 
+    /* Team logos */
+    .team-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      vertical-align: middle;
+      opacity: 0.75;
+    }
+    .team-logo-pick {
+      opacity: 1;
+      filter: drop-shadow(0 0 4px rgba(59,130,246,0.5));
+    }
+
     @media (max-width: 400px) {
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
       header h1 { font-size: 1.2rem; }
+      .team-logo { width: 22px; height: 22px; }
     }
   </style>
 </head>
@@ -278,49 +292,49 @@
         <h2 class="section-title">This Week</h2>
         
         <div class="week-row">
-          <span class="week-day">20260302</span>
+          <span class="week-day">Mon-02-26</span>
           <div class="week-bar-wrap">
             <div class="week-bar" style="width:100%;background:#22c55e"></div>
           </div>
           <span class="week-record">4-0 <small>(100%)</small></span>
         </div>
         <div class="week-row">
-          <span class="week-day">20260303</span>
+          <span class="week-day">Tue-03-26</span>
           <div class="week-bar-wrap">
             <div class="week-bar" style="width:100%;background:#22c55e"></div>
           </div>
           <span class="week-record">10-0 <small>(100%)</small></span>
         </div>
         <div class="week-row">
-          <span class="week-day">20260304</span>
+          <span class="week-day">Wed-04-26</span>
           <div class="week-bar-wrap">
             <div class="week-bar" style="width:50%;background:#f59e0b"></div>
           </div>
           <span class="week-record">3-3 <small>(50%)</small></span>
         </div>
         <div class="week-row">
-          <span class="week-day">20260305</span>
+          <span class="week-day">Thu-05-26</span>
           <div class="week-bar-wrap">
             <div class="week-bar" style="width:77%;background:#22c55e"></div>
           </div>
           <span class="week-record">7-2 <small>(78%)</small></span>
         </div>
         <div class="week-row">
-          <span class="week-day">20260306</span>
+          <span class="week-day">Fri-06-26</span>
           <div class="week-bar-wrap">
             <div class="week-bar" style="width:71%;background:#22c55e"></div>
           </div>
           <span class="week-record">5-2 <small>(71%)</small></span>
         </div>
         <div class="week-row">
-          <span class="week-day">20260307</span>
+          <span class="week-day">Sat-07-26</span>
           <div class="week-bar-wrap">
             <div class="week-bar" style="width:66%;background:#22c55e"></div>
           </div>
           <span class="week-record">4-2 <small>(67%)</small></span>
         </div>
         <div class="week-row">
-          <span class="week-day">20260308</span>
+          <span class="week-day">Sun-08-26</span>
           <div class="week-bar-wrap">
             <div class="week-bar" style="width:70%;background:#22c55e"></div>
           </div>
@@ -336,8 +350,10 @@
           <span class="badge conf-low">Tossup</span>
         </div>
         <div class="matchup">
+          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612752/primary/L/logo.svg" alt="New York Knicks" onerror="this.style.display='none'">
           <span class="team-pick">New York Knicks</span>
           <span class="vs">@</span>
+          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612746/primary/L/logo.svg" alt="LA Clippers" onerror="this.style.display='none'">
           <span class="">LA Clippers</span>
         </div>
         <div class="prediction-line">
@@ -353,7 +369,7 @@
       <div class="prob-label right">LA Clippers</div>
     </div>
         <div class="elo-line">ELO: New York Knicks 1640 · LA Clippers 1577</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">New York Knicks:</span> <span class="inj-pill inj-star">Mitchell Robinson <em>day-to-day</em></span> <span class="inj-pill inj-starter">Miles McBride <em>out</em></span> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">New York Knicks:</span> <span class="inj-pill inj-star">Mitchell Robinson <em>out</em></span> <span class="inj-pill inj-starter">Miles McBride <em>out</em></span> </div></div>
       </div>
       <div class="card game-card">
         <div class="game-header">
@@ -361,8 +377,10 @@
           <span class="badge conf-high">Strong</span>
         </div>
         <div class="matchup">
+          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612755/primary/L/logo.svg" alt="Philadelphia 76ers" onerror="this.style.display='none'">
           <span class="">Philadelphia 76ers</span>
           <span class="vs">@</span>
+          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612739/primary/L/logo.svg" alt="Cleveland Cavaliers" onerror="this.style.display='none'">
           <span class="team-pick">Cleveland Cavaliers</span>
         </div>
         <div class="prediction-line">
@@ -378,7 +396,7 @@
       <div class="prob-label right">Cleveland Cavaliers</div>
     </div>
         <div class="elo-line">ELO: Philadelphia 76ers 1465 · Cleveland Cavaliers 1657</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Philadelphia 76ers:</span> <span class="inj-pill inj-star">Joel Embiid <em>out</em></span> <span class="inj-pill inj-star">Tyrese Maxey <em>out</em></span> <span class="inj-pill inj-starter">VJ Edgecombe <em>out</em></span> </div><div class="inj-row"><span class="inj-team">Cleveland Cavaliers:</span> <span class="inj-pill inj-star">Jarrett Allen <em>day-to-day</em></span> <span class="inj-pill inj-starter">Max Strus <em>out</em></span> <span class="inj-pill inj-starter">Tyrese Proctor <em>day-to-day</em></span> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Philadelphia 76ers:</span> <span class="inj-pill inj-star">Joel Embiid <em>out</em></span> <span class="inj-pill inj-star">Tyrese Maxey <em>out</em></span> <span class="inj-pill inj-starter">VJ Edgecombe <em>out</em></span> </div><div class="inj-row"><span class="inj-team">Cleveland Cavaliers:</span> <span class="inj-pill inj-star">Jarrett Allen <em>out</em></span> <span class="inj-pill inj-starter">Dean Wade <em>day-to-day</em></span> <span class="inj-pill inj-starter">Max Strus <em>out</em></span> </div></div>
       </div>
       <div class="card game-card">
         <div class="game-header">
@@ -386,8 +404,10 @@
           <span class="badge conf-low">Tossup</span>
         </div>
         <div class="matchup">
+          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612763/primary/L/logo.svg" alt="Memphis Grizzlies" onerror="this.style.display='none'">
           <span class="team-pick">Memphis Grizzlies</span>
           <span class="vs">@</span>
+          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612751/primary/L/logo.svg" alt="Brooklyn Nets" onerror="this.style.display='none'">
           <span class="">Brooklyn Nets</span>
         </div>
         <div class="prediction-line">
@@ -411,8 +431,10 @@
           <span class="badge conf-high">Strong</span>
         </div>
         <div class="matchup">
+          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612743/primary/L/logo.svg" alt="Denver Nuggets" onerror="this.style.display='none'">
           <span class="">Denver Nuggets</span>
           <span class="vs">@</span>
+          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612760/primary/L/logo.svg" alt="Oklahoma City Thunder" onerror="this.style.display='none'">
           <span class="team-pick">Oklahoma City Thunder</span>
         </div>
         <div class="prediction-line">
@@ -436,8 +458,10 @@
           <span class="badge conf-high">Strong</span>
         </div>
         <div class="matchup">
+          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612744/primary/L/logo.svg" alt="Golden State Warriors" onerror="this.style.display='none'">
           <span class="team-pick">Golden State Warriors</span>
           <span class="vs">@</span>
+          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612762/primary/L/logo.svg" alt="Utah Jazz" onerror="this.style.display='none'">
           <span class="">Utah Jazz</span>
         </div>
         <div class="prediction-line">
@@ -629,7 +653,7 @@
   </div>
 
   <footer>
-    Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 11:41 AM
+    Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 05:01 PM
   </footer>
 </body>
 </html>
