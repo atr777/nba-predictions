@@ -205,6 +205,32 @@
     .pteam { color: var(--muted); }
     .pelo { font-weight: 700; color: var(--blue); text-align: right; }
 
+    /* Weekly summary */
+    .week-row {
+      display: grid;
+      grid-template-columns: 5rem 1fr auto;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(51,65,85,0.5);
+    }
+    .week-row:last-child { border-bottom: none; }
+    .week-day { font-size: 0.78rem; color: var(--muted); }
+    .week-bar-wrap { background: rgba(51,65,85,0.4); border-radius: 3px; height: 10px; overflow: hidden; }
+    .week-bar { height: 100%; border-radius: 3px; transition: width 0.3s; }
+    .week-record { font-size: 0.78rem; font-weight: 600; white-space: nowrap; }
+    .week-record small { font-weight: 400; color: var(--muted); }
+
+    /* Injury alerts */
+    .inj-block { margin-top: 0.45rem; border-top: 1px solid rgba(51,65,85,0.5); padding-top: 0.4rem; }
+    .inj-row { font-size: 0.72rem; margin-bottom: 0.2rem; line-height: 1.4; }
+    .inj-team { color: var(--muted); margin-right: 0.3rem; }
+    .inj-pill { display: inline-block; margin-right: 0.35rem; padding: 0.1rem 0.4rem; border-radius: 12px; }
+    .inj-pill em { font-style: normal; opacity: 0.75; }
+    .inj-star    { background: rgba(239,68,68,0.15); color: #f87171; }
+    .inj-starter { background: rgba(245,158,11,0.15); color: #fbbf24; }
+    .inj-role    { background: rgba(100,116,139,0.2); color: #94a3b8; }
+
     footer {
       text-align: center;
       color: var(--muted);
@@ -247,6 +273,61 @@
       </div>
     </div>
 
+    
+      <div class="card">
+        <h2 class="section-title">This Week</h2>
+        
+        <div class="week-row">
+          <span class="week-day">20260302</span>
+          <div class="week-bar-wrap">
+            <div class="week-bar" style="width:100%;background:#22c55e"></div>
+          </div>
+          <span class="week-record">4-0 <small>(100%)</small></span>
+        </div>
+        <div class="week-row">
+          <span class="week-day">20260303</span>
+          <div class="week-bar-wrap">
+            <div class="week-bar" style="width:100%;background:#22c55e"></div>
+          </div>
+          <span class="week-record">10-0 <small>(100%)</small></span>
+        </div>
+        <div class="week-row">
+          <span class="week-day">20260304</span>
+          <div class="week-bar-wrap">
+            <div class="week-bar" style="width:50%;background:#f59e0b"></div>
+          </div>
+          <span class="week-record">3-3 <small>(50%)</small></span>
+        </div>
+        <div class="week-row">
+          <span class="week-day">20260305</span>
+          <div class="week-bar-wrap">
+            <div class="week-bar" style="width:77%;background:#22c55e"></div>
+          </div>
+          <span class="week-record">7-2 <small>(78%)</small></span>
+        </div>
+        <div class="week-row">
+          <span class="week-day">20260306</span>
+          <div class="week-bar-wrap">
+            <div class="week-bar" style="width:71%;background:#22c55e"></div>
+          </div>
+          <span class="week-record">5-2 <small>(71%)</small></span>
+        </div>
+        <div class="week-row">
+          <span class="week-day">20260307</span>
+          <div class="week-bar-wrap">
+            <div class="week-bar" style="width:66%;background:#22c55e"></div>
+          </div>
+          <span class="week-record">4-2 <small>(67%)</small></span>
+        </div>
+        <div class="week-row">
+          <span class="week-day">20260308</span>
+          <div class="week-bar-wrap">
+            <div class="week-bar" style="width:70%;background:#22c55e"></div>
+          </div>
+          <span class="week-record">7-3 <small>(70%)</small></span>
+        </div>
+      </div>
+
     <div class="games-header">Today's Predictions</div>
     
       <div class="card game-card">
@@ -272,6 +353,7 @@
       <div class="prob-label right">LA Clippers</div>
     </div>
         <div class="elo-line">ELO: New York Knicks 1640 · LA Clippers 1577</div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">New York Knicks:</span> <span class="inj-pill inj-star">Mitchell Robinson <em>day-to-day</em></span> <span class="inj-pill inj-starter">Miles McBride <em>out</em></span> </div></div>
       </div>
       <div class="card game-card">
         <div class="game-header">
@@ -296,6 +378,7 @@
       <div class="prob-label right">Cleveland Cavaliers</div>
     </div>
         <div class="elo-line">ELO: Philadelphia 76ers 1465 · Cleveland Cavaliers 1657</div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Philadelphia 76ers:</span> <span class="inj-pill inj-star">Joel Embiid <em>out</em></span> <span class="inj-pill inj-star">Tyrese Maxey <em>out</em></span> <span class="inj-pill inj-starter">VJ Edgecombe <em>out</em></span> </div><div class="inj-row"><span class="inj-team">Cleveland Cavaliers:</span> <span class="inj-pill inj-star">Jarrett Allen <em>day-to-day</em></span> <span class="inj-pill inj-starter">Max Strus <em>out</em></span> <span class="inj-pill inj-starter">Tyrese Proctor <em>day-to-day</em></span> </div></div>
       </div>
       <div class="card game-card">
         <div class="game-header">
@@ -320,6 +403,7 @@
       <div class="prob-label right">Brooklyn Nets</div>
     </div>
         <div class="elo-line">ELO: Memphis Grizzlies 1411 · Brooklyn Nets 1277</div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Memphis Grizzlies:</span> <span class="inj-pill inj-star">Ja Morant <em>out</em></span> <span class="inj-pill inj-star">Brandon Clarke <em>out</em></span> <span class="inj-pill inj-star">Zach Edey <em>out</em></span> </div><div class="inj-row"><span class="inj-team">Brooklyn Nets:</span> <span class="inj-pill inj-star">Michael Porter Jr. <em>out</em></span> <span class="inj-pill inj-starter">Egor Demin <em>out</em></span> </div></div>
       </div>
       <div class="card game-card">
         <div class="game-header">
@@ -344,6 +428,7 @@
       <div class="prob-label right">Oklahoma City Thunder</div>
     </div>
         <div class="elo-line">ELO: Denver Nuggets 1604 · Oklahoma City Thunder 1775</div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Denver Nuggets:</span> <span class="inj-pill inj-star">Jamal Murray <em>day-to-day</em></span> <span class="inj-pill inj-starter">Peyton Watson <em>out</em></span> </div><div class="inj-row"><span class="inj-team">Oklahoma City Thunder:</span> <span class="inj-pill inj-star">Isaiah Hartenstein <em>out</em></span> <span class="inj-pill inj-star">Chet Holmgren <em>day-to-day</em></span> <span class="inj-pill inj-star">Jalen Williams <em>out</em></span> </div></div>
       </div>
       <div class="card game-card">
         <div class="game-header">
@@ -368,6 +453,7 @@
       <div class="prob-label right">Utah Jazz</div>
     </div>
         <div class="elo-line">ELO: Golden State Warriors 1527 · Utah Jazz 1272</div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Golden State Warriors:</span> <span class="inj-pill inj-star">Jimmy Butler III <em>out</em></span> <span class="inj-pill inj-star">Stephen Curry <em>out</em></span> <span class="inj-pill inj-star">Al Horford <em>out</em></span> </div><div class="inj-row"><span class="inj-team">Utah Jazz:</span> <span class="inj-pill inj-star">Jusuf Nurkic <em>out</em></span> <span class="inj-pill inj-star">Walker Kessler <em>out</em></span> <span class="inj-pill inj-star">Jaren Jackson Jr. <em>out</em></span> </div></div>
       </div>
 
     
@@ -543,7 +629,7 @@
   </div>
 
   <footer>
-    Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 11:07 AM
+    Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 11:41 AM
   </footer>
 </body>
 </html>
