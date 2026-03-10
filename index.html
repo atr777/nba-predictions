@@ -92,6 +92,7 @@
     .stat-item:first-child { border-top: 2px solid var(--accent); }
     .stat-val { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
     .stat-lbl { font-size: 0.6rem; color: var(--muted); margin-top: 0.15rem; text-transform: uppercase; letter-spacing: 0.8px; }
+    .stat-sub { font-size: 0.58rem; color: var(--muted); opacity: 0.65; margin-top: 0.1rem; }
 
     .card {
       background: var(--surface);
@@ -390,19 +391,23 @@
     <div class="stats-bar">
       <div class="stat-item">
         <div class="stat-val">65.84%</div>
-        <div class="stat-lbl">Season</div>
+        <div class="stat-lbl">Season Accuracy</div>
+        <div class="stat-sub">212 of 322 correct</div>
       </div>
       <div class="stat-item">
         <div class="stat-val">38-15</div>
         <div class="stat-lbl">Last 7 Days</div>
+        <div class="stat-sub">38 right, 15 wrong</div>
       </div>
       <div class="stat-item">
         <div class="stat-val">56.7%</div>
-        <div class="stat-lbl">Tossup Acc.</div>
+        <div class="stat-lbl">Toss-Up Games</div>
+        <div class="stat-sub">games within 30 ELO pts</div>
       </div>
       <div class="stat-item">
         <div class="stat-val">322</div>
-        <div class="stat-lbl">Tracked</div>
+        <div class="stat-lbl">Games Tracked</div>
+        <div class="stat-sub">since Oct 2025</div>
       </div>
     </div>
 
@@ -467,7 +472,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500943" target="_blank" rel="noopener" aria-label="View Chicago Bulls @ Golden State Warriors on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">10:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T22:00:00-04:00">10:00 pm ET</span>
           <span class="badge conf-med">Moderate</span>
         </div>
         <div class="matchup">
@@ -484,8 +489,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Chicago Bulls</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:25%;background:#64748b">25%</div>
-        <div class="bar-home" style="width:75%;background:#1e3a8a">75%</div>
+        <div class="bar-away" style="width:25%;background:#374151">25%</div>
+        <div class="bar-home" style="width:75%;background:var(--pick)">75%</div>
       </div>
       <div class="prob-label right">Golden State Warriors</div>
     </div>
@@ -495,7 +500,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500944" target="_blank" rel="noopener" aria-label="View Charlotte Hornets @ Portland Trail Blazers on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">10:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T22:00:00-04:00">10:00 pm ET</span>
           <span class="badge conf-low">Tossup</span>
         </div>
         <div class="matchup">
@@ -512,8 +517,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Charlotte Hornets</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:48%;background:#64748b">48%</div>
-        <div class="bar-home" style="width:52%;background:#1e3a8a">52%</div>
+        <div class="bar-away" style="width:48%;background:#374151">48%</div>
+        <div class="bar-home" style="width:52%;background:var(--pick)">52%</div>
       </div>
       <div class="prob-label right">Portland Trail Blazers</div>
     </div>
@@ -523,7 +528,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500945" target="_blank" rel="noopener" aria-label="View Indiana Pacers @ Sacramento Kings on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">10:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T22:00:00-04:00">10:00 pm ET</span>
           <span class="badge conf-low">Tossup</span>
         </div>
         <div class="matchup">
@@ -540,8 +545,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Indiana Pacers</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:46%;background:#64748b">46%</div>
-        <div class="bar-home" style="width:54%;background:#1e3a8a">54%</div>
+        <div class="bar-away" style="width:46%;background:#374151">46%</div>
+        <div class="bar-home" style="width:54%;background:var(--pick)">54%</div>
       </div>
       <div class="prob-label right">Sacramento Kings</div>
     </div>
@@ -551,7 +556,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500946" target="_blank" rel="noopener" aria-label="View Minnesota Timberwolves @ Los Angeles Lakers on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">11:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T23:00:00-04:00">11:00 pm ET</span>
           <span class="badge conf-low">Tossup</span>
         </div>
         <div class="matchup">
@@ -568,18 +573,18 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Minnesota Timberwolves</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:53%;background:#1e3a8a">53%</div>
-        <div class="bar-home" style="width:47%;background:#64748b">47%</div>
+        <div class="bar-away" style="width:53%;background:var(--pick)">53%</div>
+        <div class="bar-home" style="width:47%;background:#374151">47%</div>
       </div>
       <div class="prob-label right">Los Angeles Lakers</div>
     </div>
         <div class="elo-line">ELO: Minnesota Timberwolves 1622 · Los Angeles Lakers 1539</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Minnesota Timberwolves:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/min" target="_blank" rel="noopener" class="inj-pill inj-star">Kyle Anderson <em>day-to-day</em></a> </div><div class="inj-row"><span class="inj-team">Los Angeles Lakers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-star">LeBron James <em>out</em></a> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Los Angeles Lakers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-star">LeBron James <em>out</em></a> </div></div>
       </div>
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500936" target="_blank" rel="noopener" aria-label="View Memphis Grizzlies @ Philadelphia 76ers on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">7:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T19:00:00-04:00">7:00 pm ET</span>
           <span class="badge conf-med">Moderate</span>
         </div>
         <div class="matchup">
@@ -596,8 +601,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Memphis Grizzlies</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:34%;background:#64748b">34%</div>
-        <div class="bar-home" style="width:66%;background:#1e3a8a">66%</div>
+        <div class="bar-away" style="width:34%;background:#374151">34%</div>
+        <div class="bar-home" style="width:66%;background:var(--pick)">66%</div>
       </div>
       <div class="prob-label right">Philadelphia 76ers</div>
     </div>
@@ -607,7 +612,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500937" target="_blank" rel="noopener" aria-label="View Detroit Pistons @ Brooklyn Nets on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">7:30 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T19:30:00-04:00">7:30 pm ET</span>
           <span class="badge conf-high">Strong</span>
         </div>
         <div class="matchup">
@@ -624,8 +629,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Detroit Pistons</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:86%;background:#1e3a8a">86%</div>
-        <div class="bar-home" style="width:14%;background:#64748b">14%</div>
+        <div class="bar-away" style="width:86%;background:var(--pick)">86%</div>
+        <div class="bar-home" style="width:14%;background:#374151">14%</div>
       </div>
       <div class="prob-label right">Brooklyn Nets</div>
     </div>
@@ -635,7 +640,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500938" target="_blank" rel="noopener" aria-label="View Washington Wizards @ Miami Heat on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">7:30 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T19:30:00-04:00">7:30 pm ET</span>
           <span class="badge conf-high">Strong</span>
         </div>
         <div class="matchup">
@@ -652,8 +657,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Washington Wizards</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:11%;background:#64748b">11%</div>
-        <div class="bar-home" style="width:89%;background:#1e3a8a">89%</div>
+        <div class="bar-away" style="width:11%;background:#374151">11%</div>
+        <div class="bar-home" style="width:89%;background:var(--pick)">89%</div>
       </div>
       <div class="prob-label right">Miami Heat</div>
     </div>
@@ -663,7 +668,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500939" target="_blank" rel="noopener" aria-label="View Dallas Mavericks @ Atlanta Hawks on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">7:30 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T19:30:00-04:00">7:30 pm ET</span>
           <span class="badge conf-med">Moderate</span>
         </div>
         <div class="matchup">
@@ -680,8 +685,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Dallas Mavericks</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:27%;background:#64748b">27%</div>
-        <div class="bar-home" style="width:73%;background:#1e3a8a">73%</div>
+        <div class="bar-away" style="width:27%;background:#374151">27%</div>
+        <div class="bar-home" style="width:73%;background:var(--pick)">73%</div>
       </div>
       <div class="prob-label right">Atlanta Hawks</div>
     </div>
@@ -691,7 +696,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500940" target="_blank" rel="noopener" aria-label="View Toronto Raptors @ Houston Rockets on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">8:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T20:00:00-04:00">8:00 pm ET</span>
           <span class="badge conf-med">Moderate</span>
         </div>
         <div class="matchup">
@@ -708,8 +713,8 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Toronto Raptors</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:26%;background:#64748b">26%</div>
-        <div class="bar-home" style="width:74%;background:#1e3a8a">74%</div>
+        <div class="bar-away" style="width:26%;background:#374151">26%</div>
+        <div class="bar-home" style="width:74%;background:var(--pick)">74%</div>
       </div>
       <div class="prob-label right">Houston Rockets</div>
     </div>
@@ -719,7 +724,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500941" target="_blank" rel="noopener" aria-label="View Phoenix Suns @ Milwaukee Bucks on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">8:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T20:00:00-04:00">8:00 pm ET</span>
           <span class="badge conf-low">Tossup</span>
         </div>
         <div class="matchup">
@@ -736,18 +741,18 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Phoenix Suns</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:53%;background:#1e3a8a">53%</div>
-        <div class="bar-home" style="width:47%;background:#64748b">47%</div>
+        <div class="bar-away" style="width:53%;background:var(--pick)">53%</div>
+        <div class="bar-home" style="width:47%;background:#374151">47%</div>
       </div>
       <div class="prob-label right">Milwaukee Bucks</div>
     </div>
         <div class="elo-line">ELO: Phoenix Suns 1531 · Milwaukee Bucks 1453</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Phoenix Suns:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Grayson Allen <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Jordan Goodwin <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Mark Williams <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Milwaukee Bucks:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-star">Bobby Portis <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-starter">Jericho Sims <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-starter">Cormac Ryan <em>day-to-day</em></a> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Phoenix Suns:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Grayson Allen <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Mark Williams <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-role">Dillon Brooks <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Milwaukee Bucks:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-star">Bobby Portis <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-starter">Jericho Sims <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-starter">Cormac Ryan <em>day-to-day</em></a> </div></div>
       </div>
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500942" target="_blank" rel="noopener" aria-label="View Boston Celtics @ San Antonio Spurs on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">8:00 pm ET</span>
+          <span class="game-time" data-iso="2026-03-10T20:00:00-04:00">8:00 pm ET</span>
           <span class="badge conf-low">Tossup · Tossup</span>
         </div>
         <div class="matchup">
@@ -764,13 +769,13 @@
     <div class="prob-bar-wrap">
       <div class="prob-label">Boston Celtics</div>
       <div class="prob-bar">
-        <div class="bar-away" style="width:43%;background:#64748b">43%</div>
-        <div class="bar-home" style="width:57%;background:#1e3a8a">57%</div>
+        <div class="bar-away" style="width:43%;background:#374151">43%</div>
+        <div class="bar-home" style="width:57%;background:var(--pick)">57%</div>
       </div>
       <div class="prob-label right">San Antonio Spurs</div>
     </div>
         <div class="elo-line">ELO: Boston Celtics 1694 · San Antonio Spurs 1684</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Boston Celtics:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Nikola Vucevic <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Payton Pritchard <em>day-to-day</em></a> </div><div class="inj-row"><span class="inj-team">San Antonio Spurs:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">David Jones Garcia <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">Lindy Waters III <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">Harrison Barnes <em>out</em></a> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Boston Celtics:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Nikola Vucevic <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Payton Pritchard <em>out</em></a> </div><div class="inj-row"><span class="inj-team">San Antonio Spurs:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">David Jones Garcia <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">Lindy Waters III <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">Harrison Barnes <em>out</em></a> </div></div>
       </div>
 
     
@@ -927,8 +932,21 @@
   </div>
 
   <footer>
-    <div>Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 10, 2026 12:40 PM</div>
+    <div>Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 10, 2026 02:49 PM</div>
     <div style="margin-top:0.4rem;font-size:0.63rem;opacity:0.55;">Made by Aaron Thomas &amp; Claude Code</div>
   </footer>
+
+  <script>
+    // Convert ET game times to the visitor's local timezone
+    document.querySelectorAll('.game-time[data-iso]').forEach(function(el) {
+      try {
+        var d = new Date(el.dataset.iso);
+        if (isNaN(d.getTime())) return;
+        var day  = d.toLocaleDateString(undefined, { weekday: 'short' });
+        var time = d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+        el.textContent = day + ' · ' + time;
+      } catch(e) {}
+    });
+  </script>
 </body>
 </html>
