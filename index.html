@@ -197,6 +197,28 @@
     .upset-badge { background: rgba(239,68,68,0.15); color: #f87171; }
     .tossup-badge { background: rgba(248,161,0,0.12); color: #fbbf24; }
 
+    /* Collapsible week results */
+    .week-details { border: none; }
+    .week-summary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    .week-summary::-webkit-details-marker { display: none; }
+    .week-summary::marker { display: none; }
+    .chevron {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .week-details[open] .chevron { transform: rotate(180deg); }
+    .week-summary:hover { color: var(--text); }
+
     /* This week day grouping */
     .day-group { margin-bottom: 0.25rem; }
     .day-group:last-child { margin-bottom: 0; }
@@ -555,7 +577,7 @@
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500935" target="_blank" rel="noopener" aria-label="View New York Knicks @ LA Clippers on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time">Final               </span>
+          <span class="game-time">Final</span>
           <span class="badge conf-low">Tossup</span>
         </div>
         <div class="matchup">
@@ -583,12 +605,15 @@
 
     
       <div class="card">
-        <h2 class="section-title">This Week's Results
-          <span class="record-pill pill-good">
-            40-12 (76.9%)
-          </span>
-        </h2>
-        
+        <details class="week-details" open>
+          <summary class="section-title week-summary">
+            This Week's Results
+            <span class="record-pill pill-good">
+              40-12 (76.9%)
+            </span>
+            <span class="chevron">▾</span>
+          </summary>
+          
         <div class="day-group">
           <div class="day-header">
             <span class="day-label">Sun-08-26</span>
@@ -950,6 +975,7 @@
           <span class="result-score">114–101</span>
         </div>
         </div>
+        </details>
       </div>
 
     
@@ -1055,7 +1081,7 @@
   </div>
 
   <footer>
-    <div>Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 10:53 PM</div>
+    <div>Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 09, 2026 11:06 PM</div>
     <div style="margin-top:0.4rem;font-size:0.63rem;opacity:0.55;">Made by Aaron Thomas &amp; Claude Code</div>
   </footer>
 </body>
