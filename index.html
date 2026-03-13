@@ -35,12 +35,32 @@
     }
 
     header {
-      background: var(--surface);
+      background-color: rgba(15, 22, 35, 0.78);
+      background-image:
+        radial-gradient(55% 130px at 50% 100%, rgba(255,255,255,0.045), transparent),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+      backdrop-filter: blur(18px) saturate(140%) brightness(1.04);
+      -webkit-backdrop-filter: blur(18px) saturate(140%) brightness(1.04);
       border-top: 3px solid var(--accent);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0 0 1.5rem 1.5rem;
       padding: 1.4rem 1.5rem 1.25rem;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       overflow: hidden;
+    }
+    /* Glow line at bottom edge — mirrors footer-glow-line at top */
+    header::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 38%; height: 1px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 999px;
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 2;
     }
     /* Tiled basketball pattern across full header — hue-rotated to light blue */
     header::after {
@@ -322,14 +342,100 @@
     .inj-starter { background: rgba(248,161,0,0.12); color: #fbbf24; }
     .inj-role    { background: rgba(100,116,139,0.15); color: #94a3b8; }
 
+    /* ── Footer ── */
     footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.68rem;
-      padding: 1.5rem 1rem;
+      position: relative;
+      width: 100%;
+      max-width: 860px;
+      margin: 2rem auto 0;
       border-top: 1px solid var(--border);
-      margin-top: 0.5rem;
-      letter-spacing: 0.2px;
+      border-radius: 1.25rem 1.25rem 0 0;
+      background: radial-gradient(35% 80px at 50% 0%, rgba(255,255,255,0.04), transparent);
+      padding: 2.5rem 1.5rem 2rem;
+      overflow: hidden;
+    }
+    .footer-glow-line {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 33%; height: 1px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
+      filter: blur(2px);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr 2fr; gap: 2.5rem; }
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .footer-brand-name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .footer-brand-copy {
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 1rem;
+    }
+    @media (min-width: 640px) {
+      .footer-links-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .footer-section-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .footer-links a {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .footer-links svg {
+      width: 13px; height: 13px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+    /* Entrance animation */
+    .footer-anim {
+      opacity: 0;
+      transform: translateY(-8px);
+      filter: blur(4px);
+      transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+    }
+    .footer-anim.in-view {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
     }
 
     /* Clickable game card — overlay anchor, avoids block-in-inline parsing issues */
@@ -372,6 +478,34 @@
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
       header h1 { font-size: 2.55rem; }
       .team-logo { width: 20px; height: 20px; }
+    }
+
+    /* ── Glowing border ring (Aceternity-style, vanilla port) ── */
+    .game-card { isolation: isolate; }
+    .glow-ring {
+      position: absolute;
+      inset: -1px;
+      border-radius: 11px;
+      padding: 1px;
+      background-image: conic-gradient(
+        from calc((var(--glow-start, 0) - 35) * 1deg) at 50% 50%,
+        transparent   0deg,
+        #dd7bbb      12deg,
+        #f8a100      25deg,
+        #a855f7      38deg,
+        #4b8bf4      52deg,
+        transparent  70deg,
+        transparent 360deg
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 0;
+      opacity: var(--glow-active, 0);
+      transition: opacity 0.35s ease;
     }
   </style>
 </head>
@@ -466,7 +600,7 @@
         </div>
       </div>
 
-    <div class="games-date">March 12, 2026 &nbsp;·&nbsp; 9 games today</div>
+    <div class="games-date">March 12, 2026 &nbsp;·&nbsp; 4 games today</div>
     <div class="games-header">Today's Predictions</div>
     
       <div class="card game-card">
@@ -495,152 +629,12 @@
       <div class="prob-label right">Los Angeles Lakers</div>
     </div>
         <div class="elo-line">ELO: Chicago Bulls 1397 · Los Angeles Lakers 1539</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Chicago Bulls:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/chi" target="_blank" rel="noopener" class="inj-pill inj-star">Josh Giddey <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/chi" target="_blank" rel="noopener" class="inj-pill inj-star">Jalen Smith <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/chi" target="_blank" rel="noopener" class="inj-pill inj-starter">Zach Collins <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Los Angeles Lakers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-star">LeBron James <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-star">Jaxson Hayes <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-starter">Marcus Smart <em>day-to-day</em></a> </div></div>
-      </div>
-      <div class="card game-card">
-        <a class="game-card-link" href="https://www.nba.com/game/0022500953" target="_blank" rel="noopener" aria-label="View Philadelphia 76ers @ Detroit Pistons on NBA.com"></a>
-        <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T19:00:00-04:00">7:00 pm ET</span>
-          <span class="badge conf-high">Strong</span>
-        </div>
-        <div class="matchup">
-          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612755/primary/L/logo.svg" alt="Philadelphia 76ers" onerror="this.style.display='none'">
-          <span class="">Philadelphia 76ers</span>
-          <span class="vs">@</span>
-          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612765/primary/L/logo.svg" alt="Detroit Pistons" onerror="this.style.display='none'">
-          <span class="team-pick">Detroit Pistons</span>
-        </div>
-        <div class="prediction-line">
-          Pick: <strong>Detroit Pistons</strong> — 80.1%
-        </div>
-        
-    <div class="prob-bar-wrap">
-      <div class="prob-label">Philadelphia 76ers</div>
-      <div class="prob-bar">
-        <div class="bar-away" style="width:20%;background:#374151;color:#cbd5e1">20%</div>
-        <div class="bar-home" style="width:80%;background:var(--pick);color:#1a1a1a">80%</div>
-      </div>
-      <div class="prob-label right">Detroit Pistons</div>
-    </div>
-        <div class="elo-line">ELO: Philadelphia 76ers 1465 · Detroit Pistons 1647</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Philadelphia 76ers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/phi" target="_blank" rel="noopener" class="inj-pill inj-star">Joel Embiid <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phi" target="_blank" rel="noopener" class="inj-pill inj-star">Tyrese Maxey <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phi" target="_blank" rel="noopener" class="inj-pill inj-starter">Adem Bona <em>day-to-day</em></a> </div><div class="inj-row"><span class="inj-team">Detroit Pistons:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/det" target="_blank" rel="noopener" class="inj-pill inj-star">Ausar Thompson <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/det" target="_blank" rel="noopener" class="inj-pill inj-starter">Caris LeVert <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/det" target="_blank" rel="noopener" class="inj-pill inj-starter">Bobi Klintman <em>out</em></a> </div></div>
-      </div>
-      <div class="card game-card">
-        <a class="game-card-link" href="https://www.nba.com/game/0022500954" target="_blank" rel="noopener" aria-label="View Phoenix Suns @ Indiana Pacers on NBA.com"></a>
-        <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T19:00:00-04:00">7:00 pm ET</span>
-          <span class="badge conf-med">Moderate</span>
-        </div>
-        <div class="matchup">
-          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612756/primary/L/logo.svg" alt="Phoenix Suns" onerror="this.style.display='none'">
-          <span class="team-pick">Phoenix Suns</span>
-          <span class="vs">@</span>
-          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612754/primary/L/logo.svg" alt="Indiana Pacers" onerror="this.style.display='none'">
-          <span class="">Indiana Pacers</span>
-        </div>
-        <div class="prediction-line">
-          Pick: <strong>Phoenix Suns</strong> — 67.0%
-        </div>
-        
-    <div class="prob-bar-wrap">
-      <div class="prob-label">Phoenix Suns</div>
-      <div class="prob-bar">
-        <div class="bar-away" style="width:67%;background:var(--pick);color:#1a1a1a">67%</div>
-        <div class="bar-home" style="width:33%;background:#374151;color:#cbd5e1">33%</div>
-      </div>
-      <div class="prob-label right">Indiana Pacers</div>
-    </div>
-        <div class="elo-line">ELO: Phoenix Suns 1531 · Indiana Pacers 1348</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Phoenix Suns:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Grayson Allen <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Jordan Goodwin <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/phx" target="_blank" rel="noopener" class="inj-pill inj-starter">Haywood Highsmith <em>day-to-day</em></a> </div><div class="inj-row"><span class="inj-team">Indiana Pacers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/ind" target="_blank" rel="noopener" class="inj-pill inj-star">Tyrese Haliburton <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/ind" target="_blank" rel="noopener" class="inj-pill inj-star">Pascal Siakam <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/ind" target="_blank" rel="noopener" class="inj-pill inj-star">Ivica Zubac <em>out</em></a> </div></div>
-      </div>
-      <div class="card game-card">
-        <a class="game-card-link" href="https://www.nba.com/game/0022500955" target="_blank" rel="noopener" aria-label="View Washington Wizards @ Orlando Magic on NBA.com"></a>
-        <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T19:00:00-04:00">7:00 pm ET</span>
-          <span class="badge conf-high">Strong</span>
-        </div>
-        <div class="matchup">
-          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612764/primary/L/logo.svg" alt="Washington Wizards" onerror="this.style.display='none'">
-          <span class="">Washington Wizards</span>
-          <span class="vs">@</span>
-          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612753/primary/L/logo.svg" alt="Orlando Magic" onerror="this.style.display='none'">
-          <span class="team-pick">Orlando Magic</span>
-        </div>
-        <div class="prediction-line">
-          Pick: <strong>Orlando Magic</strong> — 88.6%
-        </div>
-        
-    <div class="prob-bar-wrap">
-      <div class="prob-label">Washington Wizards</div>
-      <div class="prob-bar">
-        <div class="bar-away" style="width:11%;background:#374151;color:#cbd5e1">11%</div>
-        <div class="bar-home" style="width:89%;background:var(--pick);color:#1a1a1a">89%</div>
-      </div>
-      <div class="prob-label right">Orlando Magic</div>
-    </div>
-        <div class="elo-line">ELO: Washington Wizards 1224 · Orlando Magic 1519</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Washington Wizards:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/wsh" target="_blank" rel="noopener" class="inj-pill inj-star">Anthony Davis <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/wsh" target="_blank" rel="noopener" class="inj-pill inj-starter">D'Angelo Russell <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/wsh" target="_blank" rel="noopener" class="inj-pill inj-starter">Cam Whitmore <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Orlando Magic:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/orl" target="_blank" rel="noopener" class="inj-pill inj-star">Franz Wagner <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/orl" target="_blank" rel="noopener" class="inj-pill inj-starter">Alex Morales <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/orl" target="_blank" rel="noopener" class="inj-pill inj-starter">Anthony Black <em>out</em></a> </div></div>
-      </div>
-      <div class="card game-card">
-        <a class="game-card-link" href="https://www.nba.com/game/0022500956" target="_blank" rel="noopener" aria-label="View Brooklyn Nets @ Atlanta Hawks on NBA.com"></a>
-        <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T19:30:00-04:00">7:30 pm ET</span>
-          <span class="badge conf-high">Strong</span>
-        </div>
-        <div class="matchup">
-          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612751/primary/L/logo.svg" alt="Brooklyn Nets" onerror="this.style.display='none'">
-          <span class="">Brooklyn Nets</span>
-          <span class="vs">@</span>
-          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612737/primary/L/logo.svg" alt="Atlanta Hawks" onerror="this.style.display='none'">
-          <span class="team-pick">Atlanta Hawks</span>
-        </div>
-        <div class="prediction-line">
-          Pick: <strong>Atlanta Hawks</strong> — 84.1%
-        </div>
-        
-    <div class="prob-bar-wrap">
-      <div class="prob-label">Brooklyn Nets</div>
-      <div class="prob-bar">
-        <div class="bar-away" style="width:16%;background:#374151;color:#cbd5e1">16%</div>
-        <div class="bar-home" style="width:84%;background:var(--pick);color:#1a1a1a">84%</div>
-      </div>
-      <div class="prob-label right">Atlanta Hawks</div>
-    </div>
-        <div class="elo-line">ELO: Brooklyn Nets 1277 · Atlanta Hawks 1506</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Brooklyn Nets:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/bkn" target="_blank" rel="noopener" class="inj-pill inj-star">Michael Porter Jr. <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bkn" target="_blank" rel="noopener" class="inj-pill inj-starter">Day'Ron Sharpe <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bkn" target="_blank" rel="noopener" class="inj-pill inj-starter">Nolan Traore <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Atlanta Hawks:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/atl" target="_blank" rel="noopener" class="inj-pill inj-star">Dyson Daniels <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/atl" target="_blank" rel="noopener" class="inj-pill inj-starter">Jonathan Kuminga <em>out</em></a> </div></div>
-      </div>
-      <div class="card game-card">
-        <a class="game-card-link" href="https://www.nba.com/game/0022500957" target="_blank" rel="noopener" aria-label="View Milwaukee Bucks @ Miami Heat on NBA.com"></a>
-        <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T19:30:00-04:00">7:30 pm ET</span>
-          <span class="badge conf-med">Moderate</span>
-        </div>
-        <div class="matchup">
-          <img class="team-logo" src="https://cdn.nba.com/logos/nba/1610612749/primary/L/logo.svg" alt="Milwaukee Bucks" onerror="this.style.display='none'">
-          <span class="">Milwaukee Bucks</span>
-          <span class="vs">@</span>
-          <img class="team-logo team-logo-pick" src="https://cdn.nba.com/logos/nba/1610612748/primary/L/logo.svg" alt="Miami Heat" onerror="this.style.display='none'">
-          <span class="team-pick">Miami Heat</span>
-        </div>
-        <div class="prediction-line">
-          Pick: <strong>Miami Heat</strong> — 68.1%
-        </div>
-        
-    <div class="prob-bar-wrap">
-      <div class="prob-label">Milwaukee Bucks</div>
-      <div class="prob-bar">
-        <div class="bar-away" style="width:32%;background:#374151;color:#cbd5e1">32%</div>
-        <div class="bar-home" style="width:68%;background:var(--pick);color:#1a1a1a">68%</div>
-      </div>
-      <div class="prob-label right">Miami Heat</div>
-    </div>
-        <div class="elo-line">ELO: Milwaukee Bucks 1453 · Miami Heat 1525</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Milwaukee Bucks:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-star">Bobby Portis <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-starter">Jericho Sims <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mil" target="_blank" rel="noopener" class="inj-pill inj-starter">Cormac Ryan <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Miami Heat:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/mia" target="_blank" rel="noopener" class="inj-pill inj-star">Kel'el Ware <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mia" target="_blank" rel="noopener" class="inj-pill inj-starter">Norman Powell <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mia" target="_blank" rel="noopener" class="inj-pill inj-starter">Nikola Jovic <em>out</em></a> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Chicago Bulls:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/chi" target="_blank" rel="noopener" class="inj-pill inj-star">Josh Giddey <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/chi" target="_blank" rel="noopener" class="inj-pill inj-star">Jalen Smith <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/chi" target="_blank" rel="noopener" class="inj-pill inj-starter">Zach Collins <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Los Angeles Lakers:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-star">LeBron James <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-star">Jaxson Hayes <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/lal" target="_blank" rel="noopener" class="inj-pill inj-starter">Marcus Smart <em>out</em></a> </div></div>
       </div>
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022501111" target="_blank" rel="noopener" aria-label="View Dallas Mavericks @ Memphis Grizzlies on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T20:00:00-04:00">8:00 pm ET</span>
+          <span class="game-time">TBD</span>
           <span class="badge conf-low">Tossup · Tossup</span>
         </div>
         <div class="matchup">
@@ -663,12 +657,12 @@
       <div class="prob-label right">Memphis Grizzlies</div>
     </div>
         <div class="elo-line">ELO: Dallas Mavericks 1392 · Memphis Grizzlies 1411</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Dallas Mavericks:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/dal" target="_blank" rel="noopener" class="inj-pill inj-star">Kyrie Irving <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/dal" target="_blank" rel="noopener" class="inj-pill inj-star">Dereck Lively II <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/dal" target="_blank" rel="noopener" class="inj-pill inj-starter">Klay Thompson <em>day-to-day</em></a> </div><div class="inj-row"><span class="inj-team">Memphis Grizzlies:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Ja Morant <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Brandon Clarke <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Zach Edey <em>out</em></a> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Dallas Mavericks:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/dal" target="_blank" rel="noopener" class="inj-pill inj-star">Kyrie Irving <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/dal" target="_blank" rel="noopener" class="inj-pill inj-star">Dereck Lively II <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/dal" target="_blank" rel="noopener" class="inj-pill inj-starter">Klay Thompson <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Memphis Grizzlies:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Ja Morant <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Brandon Clarke <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/mem" target="_blank" rel="noopener" class="inj-pill inj-star">Zach Edey <em>out</em></a> </div></div>
       </div>
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500958" target="_blank" rel="noopener" aria-label="View Denver Nuggets @ San Antonio Spurs on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T21:00:00-04:00">9:00 pm ET</span>
+          <span class="game-time">TBD</span>
           <span class="badge conf-med">Moderate</span>
         </div>
         <div class="matchup">
@@ -691,12 +685,12 @@
       <div class="prob-label right">San Antonio Spurs</div>
     </div>
         <div class="elo-line">ELO: Denver Nuggets 1604 · San Antonio Spurs 1684</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Denver Nuggets:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/den" target="_blank" rel="noopener" class="inj-pill inj-starter">Peyton Watson <em>out</em></a> </div><div class="inj-row"><span class="inj-team">San Antonio Spurs:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-star">Victor Wembanyama <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">David Jones Garcia <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">Lindy Waters III <em>day-to-day</em></a> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Denver Nuggets:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/den" target="_blank" rel="noopener" class="inj-pill inj-star">Aaron Gordon <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/den" target="_blank" rel="noopener" class="inj-pill inj-starter">Peyton Watson <em>out</em></a> </div><div class="inj-row"><span class="inj-team">San Antonio Spurs:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-star">Victor Wembanyama <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">David Jones Garcia <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/sa" target="_blank" rel="noopener" class="inj-pill inj-starter">Lindy Waters III <em>day-to-day</em></a> </div></div>
       </div>
       <div class="card game-card">
         <a class="game-card-link" href="https://www.nba.com/game/0022500959" target="_blank" rel="noopener" aria-label="View Boston Celtics @ Oklahoma City Thunder on NBA.com"></a>
         <div class="game-header">
-          <span class="game-time" data-iso="2026-03-12T21:30:00-04:00">9:30 pm ET</span>
+          <span class="game-time">TBD</span>
           <span class="badge conf-med">Moderate</span>
         </div>
         <div class="matchup">
@@ -719,7 +713,7 @@
       <div class="prob-label right">Oklahoma City Thunder</div>
     </div>
         <div class="elo-line">ELO: Boston Celtics 1694 · Oklahoma City Thunder 1775</div>
-        <div class="inj-block"><div class="inj-row"><span class="inj-team">Boston Celtics:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Jayson Tatum <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Derrick White <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Nikola Vucevic <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Oklahoma City Thunder:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Jalen Williams <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Isaiah Hartenstein <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-starter">Branden Carlson <em>out</em></a> </div></div>
+        <div class="inj-block"><div class="inj-row"><span class="inj-team">Boston Celtics:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Jayson Tatum <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Derrick White <em>day-to-day</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/bos" target="_blank" rel="noopener" class="inj-pill inj-star">Nikola Vucevic <em>out</em></a> </div><div class="inj-row"><span class="inj-team">Oklahoma City Thunder:</span> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Jalen Williams <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-star">Isaiah Hartenstein <em>out</em></a> <a href="https://www.espn.com/nba/team/injuries/_/name/okc" target="_blank" rel="noopener" class="inj-pill inj-starter">Branden Carlson <em>out</em></a> </div></div>
       </div>
 
     
@@ -882,8 +876,72 @@
   </div>
 
   <footer>
-    <div>Hybrid ELO Model (70% Team + 30% Player) &nbsp;·&nbsp; Updated Mar 12, 2026 11:04 AM</div>
-    <div style="margin-top:0.4rem;font-size:0.63rem;opacity:0.55;">Made by Aaron Thomas &amp; Claude Code</div>
+    <div class="footer-glow-line"></div>
+    <div class="footer-grid">
+
+      <div class="footer-brand footer-anim" style="transition-delay:0s">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="14" cy="14" r="6" fill="var(--pick)" opacity="0.85"/>
+        </svg>
+        <span class="footer-brand-name">Second Bounce</span>
+        <p class="footer-brand-copy">
+          NBA game predictions powered by a hybrid ELO model.<br>
+          Updated daily. &copy; 2026 Aaron Thomas.
+        </p>
+      </div>
+
+      <div class="footer-links-grid">
+
+        <div class="footer-anim" style="transition-delay:0.1s">
+          <div class="footer-section-label">Predictions</div>
+          <ul class="footer-links">
+            <li><a href="#today">Today's Picks</a></li>
+            <li><a href="#week">This Week</a></li>
+            <li><a href="#stats">Season Stats</a></li>
+            <li><a href="#injuries">Injury Report</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-anim" style="transition-delay:0.2s">
+          <div class="footer-section-label">Model</div>
+          <ul class="footer-links">
+            <li><a href="https://fivethirtyeight.com/methodology/how-our-nba-predictions-work/" target="_blank" rel="noopener">Methodology</a></li>
+            <li><a href="https://github.com/atr777/nba-predictions" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://harvardsportsanalysis.org/2019/01/a-simple-improvement-to-fivethirtyeights-nba-elo-model/" target="_blank" rel="noopener">Research</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-anim" style="transition-delay:0.35s">
+          <div class="footer-section-label">Social</div>
+          <ul class="footer-links">
+            <li>
+              <a href="#" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
+                Twitter / X
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/atr777/nba-predictions" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.566 18.566 0 0 0-5.487 0 12.36 12.36 0 0 0-.617-1.23A.077.077 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.07.07 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055 20.03 20.03 0 0 0 5.993 2.98.078.078 0 0 0 .084-.026c.462-.62.874-1.275 1.226-1.963.021-.04.001-.088-.041-.104a13.201 13.201 0 0 1-1.872-.878.075.075 0 0 1-.008-.125c.126-.093.252-.19.372-.287a.075.075 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.075.075 0 0 1 .079.009c.12.098.245.195.372.288a.075.075 0 0 1-.006.125c-.598.344-1.22.635-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.077.077 0 0 0 .084.028 19.963 19.963 0 0 0 6.002-2.981.076.076 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028z"/></svg>
+                Discord
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-anim" style="transition-delay:0.5s;margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);text-align:center;font-size:0.62rem;color:var(--muted);opacity:0.6;">
+      Hybrid ELO Model &nbsp;·&nbsp; Updated Mar 12, 2026 08:00 PM &nbsp;·&nbsp; Made by Aaron Thomas &amp; Claude Code
+    </div>
   </footer>
 
   <script>
@@ -897,6 +955,61 @@
         el.textContent = day + ' · ' + time;
       } catch(e) {}
     });
+
+    // ── Footer entrance animations (IntersectionObserver, replaces motion/react whileInView) ──
+    (function() {
+      var els = document.querySelectorAll('.footer-anim');
+      if (!els.length) return;
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      els.forEach(function(el) { obs.observe(el); });
+    })();
+
+    // ── Glowing border ring — Aceternity-style vanilla port ──
+    (function() {
+      var cards = Array.from(document.querySelectorAll('.game-card'));
+      var states = new Map();
+
+      cards.forEach(function(card) {
+        var ring = document.createElement('div');
+        ring.className = 'glow-ring';
+        card.appendChild(ring);
+        states.set(card, { current: 0, target: 0, raf: null });
+      });
+
+      function normDiff(d) { return ((d % 360) + 540) % 360 - 180; }
+
+      function tick(card) {
+        var s = states.get(card);
+        var diff = normDiff(s.target - s.current);
+        if (Math.abs(diff) < 0.2) { s.current = s.target; s.raf = null; return; }
+        s.current += diff * 0.08;
+        card.style.setProperty('--glow-start', s.current.toFixed(1));
+        s.raf = requestAnimationFrame(function() { tick(card); });
+      }
+
+      document.body.addEventListener('pointermove', function(e) {
+        var mx = e.clientX, my = e.clientY;
+        cards.forEach(function(card) {
+          var r = card.getBoundingClientRect();
+          var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          var prox = 64;
+          var active = mx > r.left - prox && mx < r.right + prox &&
+                       my > r.top  - prox && my < r.bottom + prox;
+          card.style.setProperty('--glow-active', active ? '1' : '0');
+          if (!active) return;
+          var s = states.get(card);
+          s.target = Math.atan2(my - cy, mx - cx) * 180 / Math.PI + 90;
+          if (!s.raf) s.raf = requestAnimationFrame(function() { tick(card); });
+        });
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>
