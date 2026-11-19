@@ -191,5 +191,9 @@ date,logged_at_et,away_team,home_team,pick,pick_prob,home_win_prob,away_score,ho
 20261117,2026-11-17T07:04:38,New York Knicks,Toronto Raptors,New York Knicks,0.645,0.355,111,102,1
 20261117,2026-11-17T07:04:38,Portland Trail Blazers,Minnesota Timberwolves,Minnesota Timberwolves,0.65,0.65,105,106,1
 20261117,2026-11-17T07:04:38,Detroit Pistons,San Antonio Spurs,San Antonio Spurs,0.8239,0.8239,105,93,0
-20261117,2026-11-17T07:04:38,Utah Jazz,Los Angeles Clippers,Los Angeles Clippers,0.8244,0.8244,,,
-20261117,2026-11-17T07:04:38,Charlotte Hornets,Los Angeles Lakers,Los Angeles Lakers,0.8414,0.8414,,,
+20261117,2026-11-17T07:04:38,Utah Jazz,Los Angeles Clippers,Los Angeles Clippers,0.8244,0.8244,132,107,0
+20261117,2026-11-17T07:04:38,Charlotte Hornets,Los Angeles Lakers,Los Angeles Lakers,0.8414,0.8414,114,118,1
+20261119,2026-11-19T07:02:55,Golden State Warriors,Memphis Grizzlies,Memphis Grizzlies,0.7194,0.7194,,,
+20261119,2026-11-19T07:02:55,Portland Trail Blazers,Milwaukee Bucks,Portland Trail Blazers,0.8391,0.1609,,,
+20261119,2026-11-19T07:02:55,New York Knicks,Minnesota Timberwolves,Minnesota Timberwolves,0.55,0.55,,,
+20261119,2026-11-19T07:02:55,Los Angeles Clippers,San Antonio Spurs,San Antonio Spurs,0.871,0.871,,,
