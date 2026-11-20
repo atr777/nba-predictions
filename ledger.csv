@@ -193,7 +193,16 @@ date,logged_at_et,away_team,home_team,pick,pick_prob,home_win_prob,away_score,ho
 20261117,2026-11-17T07:04:38,Detroit Pistons,San Antonio Spurs,San Antonio Spurs,0.8239,0.8239,105,93,0
 20261117,2026-11-17T07:04:38,Utah Jazz,Los Angeles Clippers,Los Angeles Clippers,0.8244,0.8244,132,107,0
 20261117,2026-11-17T07:04:38,Charlotte Hornets,Los Angeles Lakers,Los Angeles Lakers,0.8414,0.8414,114,118,1
-20261119,2026-11-19T07:02:55,Golden State Warriors,Memphis Grizzlies,Memphis Grizzlies,0.7194,0.7194,,,
-20261119,2026-11-19T07:02:55,Portland Trail Blazers,Milwaukee Bucks,Portland Trail Blazers,0.8391,0.1609,,,
-20261119,2026-11-19T07:02:55,New York Knicks,Minnesota Timberwolves,Minnesota Timberwolves,0.55,0.55,,,
-20261119,2026-11-19T07:02:55,Los Angeles Clippers,San Antonio Spurs,San Antonio Spurs,0.871,0.871,,,
+20261119,2026-11-19T07:02:55,Golden State Warriors,Memphis Grizzlies,Memphis Grizzlies,0.7194,0.7194,98,126,1
+20261119,2026-11-19T07:02:55,Portland Trail Blazers,Milwaukee Bucks,Portland Trail Blazers,0.8391,0.1609,124,114,1
+20261119,2026-11-19T07:02:55,New York Knicks,Minnesota Timberwolves,Minnesota Timberwolves,0.55,0.55,102,99,0
+20261119,2026-11-19T07:02:55,Los Angeles Clippers,San Antonio Spurs,San Antonio Spurs,0.871,0.871,112,124,1
+20261120,2026-11-20T07:02:44,Charlotte Hornets,Atlanta Hawks,Atlanta Hawks,0.65,0.65,,,
+20261120,2026-11-20T07:02:44,Orlando Magic,Brooklyn Nets,Orlando Magic,0.731,0.269,,,
+20261120,2026-11-20T07:02:44,Indiana Pacers,Cleveland Cavaliers,Cleveland Cavaliers,0.7794,0.7794,,,
+20261120,2026-11-20T07:02:44,Toronto Raptors,Detroit Pistons,Detroit Pistons,0.8076,0.8076,,,
+20261120,2026-11-20T07:02:44,Washington Wizards,Chicago Bulls,Chicago Bulls,0.75,0.75,,,
+20261120,2026-11-20T07:02:44,New Orleans Pelicans,Oklahoma City Thunder,Oklahoma City Thunder,0.8599,0.8599,,,
+20261120,2026-11-20T07:02:44,Phoenix Suns,Utah Jazz,Phoenix Suns,0.6768,0.3232,,,
+20261120,2026-11-20T07:02:44,Houston Rockets,Denver Nuggets,Houston Rockets,0.5374,0.4626,,,
+20261120,2026-11-20T07:02:44,Sacramento Kings,Los Angeles Lakers,Los Angeles Lakers,0.9,0.9,,,
