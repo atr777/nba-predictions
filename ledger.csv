@@ -206,9 +206,16 @@ date,logged_at_et,away_team,home_team,pick,pick_prob,home_win_prob,away_score,ho
 20261120,2026-11-20T07:02:44,Phoenix Suns,Utah Jazz,Phoenix Suns,0.6768,0.3232,111,101,1
 20261120,2026-11-20T07:02:44,Houston Rockets,Denver Nuggets,Houston Rockets,0.5374,0.4626,124,133,0
 20261120,2026-11-20T07:02:44,Sacramento Kings,Los Angeles Lakers,Los Angeles Lakers,0.9,0.9,104,106,1
-20261121,2026-11-21T07:03:09,Milwaukee Bucks,Philadelphia 76ers,Philadelphia 76ers,0.8725,0.8725,,,
-20261121,2026-11-21T07:03:09,Portland Trail Blazers,New York Knicks,New York Knicks,0.55,0.55,,,
-20261121,2026-11-21T07:03:09,Los Angeles Clippers,Dallas Mavericks,Dallas Mavericks,0.55,0.55,,,
-20261121,2026-11-21T07:03:09,Memphis Grizzlies,Minnesota Timberwolves,Minnesota Timberwolves,0.55,0.55,,,
-20261121,2026-11-21T07:03:09,New Orleans Pelicans,San Antonio Spurs,San Antonio Spurs,0.9,0.9,,,
-20261121,2026-11-21T07:03:09,Boston Celtics,Sacramento Kings,Boston Celtics,0.8954,0.1046,,,
+20261121,2026-11-21T07:03:09,Milwaukee Bucks,Philadelphia 76ers,Philadelphia 76ers,0.8725,0.8725,129,132,1
+20261121,2026-11-21T07:03:09,Portland Trail Blazers,New York Knicks,New York Knicks,0.55,0.55,96,97,1
+20261121,2026-11-21T07:03:09,Los Angeles Clippers,Dallas Mavericks,Dallas Mavericks,0.55,0.55,100,110,1
+20261121,2026-11-21T07:03:09,Memphis Grizzlies,Minnesota Timberwolves,Minnesota Timberwolves,0.55,0.55,95,104,1
+20261121,2026-11-21T07:03:09,New Orleans Pelicans,San Antonio Spurs,San Antonio Spurs,0.9,0.9,91,114,1
+20261121,2026-11-21T07:03:09,Boston Celtics,Sacramento Kings,Boston Celtics,0.8954,0.1046,96,97,0
+20261122,2026-11-22T07:02:45,Detroit Pistons,Atlanta Hawks,Detroit Pistons,0.5073,0.4927,,,
+20261122,2026-11-22T07:02:45,Oklahoma City Thunder,Miami Heat,Miami Heat,0.55,0.55,,,
+20261122,2026-11-22T07:02:45,Orlando Magic,Washington Wizards,Orlando Magic,0.6896,0.3104,,,
+20261122,2026-11-22T07:02:45,Denver Nuggets,Chicago Bulls,Denver Nuggets,0.5838,0.4162,,,
+20261122,2026-11-22T07:02:45,Dallas Mavericks,Utah Jazz,Utah Jazz,0.55,0.55,,,
+20261122,2026-11-22T07:02:45,Indiana Pacers,New York Knicks,New York Knicks,0.8174,0.8174,,,
+20261122,2026-11-22T07:02:45,Boston Celtics,Golden State Warriors,Boston Celtics,0.7392,0.2608,,,
