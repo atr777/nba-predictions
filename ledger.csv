@@ -219,13 +219,16 @@ date,logged_at_et,away_team,home_team,pick,pick_prob,home_win_prob,away_score,ho
 20261122,2026-11-22T07:02:45,Dallas Mavericks,Utah Jazz,Utah Jazz,0.55,0.55,116,114,0
 20261122,2026-11-22T07:02:45,Indiana Pacers,New York Knicks,New York Knicks,0.8174,0.8174,106,113,1
 20261122,2026-11-22T07:02:45,Boston Celtics,Golden State Warriors,Boston Celtics,0.7392,0.2608,87,88,0
-20261123,2026-11-23T07:02:52,Memphis Grizzlies,Charlotte Hornets,Memphis Grizzlies,0.5738,0.4262,,,
-20261123,2026-11-23T07:02:52,Portland Trail Blazers,Philadelphia 76ers,Philadelphia 76ers,0.55,0.55,,,
-20261123,2026-11-23T07:02:52,Oklahoma City Thunder,Indiana Pacers,Oklahoma City Thunder,0.7555,0.2445,,,
-20261123,2026-11-23T07:02:52,Milwaukee Bucks,Toronto Raptors,Toronto Raptors,0.75,0.75,,,
-20261123,2026-11-23T07:02:52,Brooklyn Nets,Minnesota Timberwolves,Minnesota Timberwolves,0.8592,0.8592,,,
-20261123,2026-11-23T07:02:52,Cleveland Cavaliers,Chicago Bulls,Cleveland Cavaliers,0.6485,0.3515,,,
-20261123,2026-11-23T07:02:52,Phoenix Suns,New Orleans Pelicans,Phoenix Suns,0.6766,0.3234,,,
-20261123,2026-11-23T07:02:52,Los Angeles Clippers,Houston Rockets,Houston Rockets,0.8115,0.8115,,,
-20261123,2026-11-23T07:02:52,Utah Jazz,Los Angeles Lakers,Los Angeles Lakers,0.8735,0.8735,,,
-20261123,2026-11-23T07:02:52,San Antonio Spurs,Sacramento Kings,San Antonio Spurs,0.8936,0.1064,,,
+20261123,2026-11-23T07:02:52,Memphis Grizzlies,Charlotte Hornets,Memphis Grizzlies,0.5738,0.4262,117,111,1
+20261123,2026-11-23T07:02:52,Portland Trail Blazers,Philadelphia 76ers,Philadelphia 76ers,0.55,0.55,128,111,0
+20261123,2026-11-23T07:02:52,Oklahoma City Thunder,Indiana Pacers,Oklahoma City Thunder,0.7555,0.2445,120,125,0
+20261123,2026-11-23T07:02:52,Milwaukee Bucks,Toronto Raptors,Toronto Raptors,0.75,0.75,116,111,0
+20261123,2026-11-23T07:02:52,Brooklyn Nets,Minnesota Timberwolves,Minnesota Timberwolves,0.8592,0.8592,116,142,1
+20261123,2026-11-23T07:02:52,Cleveland Cavaliers,Chicago Bulls,Cleveland Cavaliers,0.6485,0.3515,108,122,0
+20261123,2026-11-23T07:02:52,Phoenix Suns,New Orleans Pelicans,Phoenix Suns,0.6766,0.3234,123,119,1
+20261123,2026-11-23T07:02:52,Los Angeles Clippers,Houston Rockets,Houston Rockets,0.8115,0.8115,104,116,1
+20261123,2026-11-23T07:02:52,Utah Jazz,Los Angeles Lakers,Los Angeles Lakers,0.8735,0.8735,94,109,1
+20261123,2026-11-23T07:02:52,San Antonio Spurs,Sacramento Kings,San Antonio Spurs,0.8936,0.1064,123,107,1
+20261124,2026-11-24T07:03:33,Detroit Pistons,Orlando Magic,Detroit Pistons,0.5497,0.4503,,,
+20261124,2026-11-24T07:03:33,Boston Celtics,Washington Wizards,Boston Celtics,0.7447,0.2553,,,
+20261124,2026-11-24T07:03:33,Dallas Mavericks,Denver Nuggets,Denver Nuggets,0.7357,0.7357,,,
